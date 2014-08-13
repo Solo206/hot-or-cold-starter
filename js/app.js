@@ -23,11 +23,8 @@ function newGame(){
 	resetGame();
 	// new game is the function that starts the game will need to be called again after button push 
 	var randNum=generate();
-	// alert(randNum);
-	// var inputNum="";
-	// alert(count);
+	//clears and resets variables
 	var list=" ";
-	// alert(list);
 	var count=0;
 	var inputNum=0;
 	clickGuess(randNum,inputNum, count,list);
@@ -37,23 +34,28 @@ function newGame(){
 function clickGuess(randNum,inputNum,count,list){
 	// alert("at clickGuess"+" "+list);
 	$('#guessButton').click(function(e){
+		//prevents default behavior
 		e.preventDefault();
+		//increment count
 		count++;
 		// alert(count);
 		$('#count').text(""+count);
 		var inputNum=$('#userGuess').val();
-		//add to guessList
-		// alert(list);
-		// alert(inputNum);
+		//add to guessList with inputted guessed number
 		list+=inputNum+"  ";
+		//display onto #guessList
 		$('#guessList').text(list);
+		//convert to guessed numberstring to integer
 		var guess=parseInt(inputNum);
+		//store how far away guess is and relay that to user;
 		var distance=isClose(randNum, guess);
 		$('#feedback').text("You are off by "+distance);
+		//loop through clickGuess function if guess and random number are not same
 		if (randNum!=guess){
 			clickGuess(randNum,inputNum,count,list);
 		}
 		else{
+		//otherwise congratulate user and reset game back to newGame
 			$('#feedback').text("Congratulations, it is "+guess);
 			//change text of Guess button to Play again
 			$('#guessButton').val('Play again');
