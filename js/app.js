@@ -48,9 +48,9 @@ function clickGuess(randNum,inputNum,count,list){
 		//convert to guessed numberstring to integer
 		var guess=parseInt(inputNum);
 		//store how far away guess is and relay that to user;
-		var distance=isClose(randNum, guess);
+		var temp=isClose(randNum, guess);
 		//concatenate string response to feedback id
-		$('#feedback').text("You are off by "+distance);
+		$('#feedback').text(""+temp);
 		//loop through clickGuess function if guess and random number are not same
 		if (randNum!=guess){
 			clickGuess(randNum,inputNum,count,list);
