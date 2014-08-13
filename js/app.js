@@ -49,6 +49,7 @@ function clickGuess(randNum,inputNum,count,list){
 		var guess=parseInt(inputNum);
 		//store how far away guess is and relay that to user;
 		var distance=isClose(randNum, guess);
+		//concatenate string response to feedback id
 		$('#feedback').text("You are off by "+distance);
 		//loop through clickGuess function if guess and random number are not same
 		if (randNum!=guess){
@@ -85,8 +86,46 @@ function generate(){
 }
 function isClose(randNum,guess){
 	var diff=randNum-guess;
-	//returns the absolute value of the difference between guess and random number
-	return Math.abs(diff);
+	//convert to the absolute value of the difference between guess and random number
+	diff=Math.abs(diff);
+	// return varied string statements based on amount of difference-e.g. hot cold, etc
+	if (diff<=5){
+		return "Inferno";
+	} 
+	else if (diff<=10){
+		return "Very hot";
+	}
+	else if (diff<=20){
+		return "Hot"
+	}
+	else if (diff<=30){
+		return "Very warm"
+	}
+	else if (diff<=40){
+		return "Warm"
+	}
+	else if (diff<=50){
+		return "Luke-warm"
+	}
+	else if (diff<=50){
+		return "Cool"
+	}
+	else if (diff<=60){
+		return "Very cool"
+	}
+	else if (diff<=70){
+		return "Cold"
+	}
+	else if (diff<=80){
+		return "Very cold"
+	}
+	else if (diff<=90){
+		return "Freezing"
+	}
+	else {
+		return "Remote area on dark-side of moon frigid"
+	}
+
 }
 // overlay-is the instruction box
 //during page load & when user clicks new game button, javascript should start new game.
